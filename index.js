@@ -2,12 +2,14 @@ var replace = require('broccoli-replace');
 
 var options =  {
   files: [
-   '**/*.hbs' // replace only html files in src
+   '**/*' // replace only html files in src
  ],
  patterns: [
    {
-     match: 'igor',
-     replacement: 'seb'
+     match: /igor/,
+     replacement: function() {
+      return 'seb'
+    } 
    }
  ]
 };
@@ -17,9 +19,9 @@ module.exports = {
  included: function(app) {
    this._super.included.apply(this, arguments);
 
-     app.registry.add('templates', {
+     app.registry.add('template', {
        name: 'relative-i18n',
-       ext: 'templates',
+       ext: 'hbs',
        toTree: function(tree) {
          return replace(tree, options);
        }
