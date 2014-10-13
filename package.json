@@ -35,5 +35,8 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "dependencies": {
+    "broccoli-replace": "^0.2.0"
   }
 }
